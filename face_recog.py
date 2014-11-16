@@ -61,7 +61,17 @@ for matrix_t in A:
 	for matrix in A:
 		L[i].append(transpose*matrix)
 	i += 1
-	print i
+	print(i)
+
+L_element_array = [[0 for x in range(L[0][0].shape[1]*len(L))] for i in range(L[0][0].shape[0]*len(L))]
+for I in range(len(L)):
+	for i in range(L[0][0].shape[0]):
+		for j in range(L[0][0].shape[1]):
+			for J in range(len(L)):
+				L_element_array[i+I][j+J] = L[I][J][i][j]
+
+L = matrix(L_element_array)
+	
 
 eigenvalue, v = linalg.eig(L)
 eigenfaces = []
