@@ -1,4 +1,5 @@
 from PIL import Image
+from matrix import Matrix
 import os
 
 
@@ -40,7 +41,7 @@ ghostface_killah = avg_face.load()
 for i in range(width):
 	for j in range(height):
 		ghostface_killah[i, j] = avg_face_array[i][j]
-
+avg_face.save("avg_face.gif")
 avg_face.show()
 
 errors = [[[] for i in range(width)] for j in range(height)]
