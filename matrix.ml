@@ -12,6 +12,8 @@ let multiply x y =
   done;
   z
 
+changes!!!
+
 let multiply_stream x y =
   let xRow = 48000
   and yRow = 48000 in
@@ -23,10 +25,18 @@ let multiply_stream x y =
         z.(i).(j) <- z.(i).(j) + Stream.next (Stream.next x) * Stream.next (Stream.next y)
       done
     done
-  done;
-  z
-
-
+  done;                               yCol                 a     b         
+  z                                 [      ]   [      ]  [1 2] [1 0] = [1  ]
+                               row  [   a  ] * [   b  ]  [3 4] [0 1]   [    ]
+                                    [      ]   [      ]      
+  for(int i = 0;i < m;i++){  //for all of the rows in a 
+      for(int j = 0;j < p;j++){ //for all the col in b
+         for(int k = 0;k < n;k++){ // for all the rows in b
+            ans[i][j] += a[i][k] * b[k][j];
+         }
+      }
+   }
+ 
 
 
 
