@@ -49,3 +49,4 @@ for face in range(len(images)):
 	for i in range(width):
 		for j in range(height):
 			errors[face][i].append(images[face][i][j] - avg_face_array[i][j])
+	
