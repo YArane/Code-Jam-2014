@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from PIL import Image
 import os
 import math
@@ -151,7 +152,6 @@ names = {
 
 def main():
 	argument = str(sys.argv[1])
-	print argument
 	image = Image.open(argument)
 	if hasattr(image.getpixel((0, 0)), '__iter__'):
 		print find_best_match_colour(argument, get_list_of_avg_faces('faces/training dataset/'))
