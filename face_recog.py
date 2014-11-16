@@ -53,25 +53,26 @@ for face in range(len(images)):
 	numpy_error = matrix(errors[face])
 	A.append(numpy_error)
 
-#find L = At*A
+#find L = At*A -- must be pickled
 L = [[] for i in range(len(A))]
 i = 0
 for matrix_t in A:
 	transpose = matrix_t.transpose()
-	for matrix in A:
-		L[i].append(transpose*matrix)
+	for m in A:
+		L[i].append(transpose*m)
 	i += 1
 	print(i)
 
+# ritual to summon the L 
+# sorry for all the loops
 L_element_array = [[0 for x in range(L[0][0].shape[1]*len(L))] for i in range(L[0][0].shape[0]*len(L))]
 for I in range(len(L)):
 	for i in range(L[0][0].shape[0]):
 		for j in range(L[0][0].shape[1]):
 			for J in range(len(L)):
-				L_element_array[i+I][j+J] = L[I][J][i][j]
+				L_element_array[i+I][j+J] = int(L[I][J].item((i,j)))
 
 L = matrix(L_element_array)
-	
 
 eigenvalue, v = linalg.eig(L)
 eigenfaces = []
@@ -80,3 +81,4 @@ for i in range(len(images)):
 	for j in range(len(v)):
 		gregory = gregory + v[i]*A[j]
 	eigenfaces.append(gregory)
+
