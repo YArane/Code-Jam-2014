@@ -42,7 +42,7 @@ for i in range(width):
 avg_face.save("avg_face.gif")
 #avg_face.show()
 
-##error section - hooky r kinda thing minus trident
+#error section - hooky r kinda thing minus trident
 errors = [[[] for i in range(width)] for j in range(height)]
 A = []
 for face in range(len(images)):
