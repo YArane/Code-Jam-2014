@@ -53,7 +53,7 @@ for face in range(len(images)):
 	numpy_error = matrix(errors[face])
 	A.append(numpy_error)
 
-#find L - At*A
+#find L = At*A
 L = [[] for i in range(len(A))]
 i = 0
 for matrix_t in A:
@@ -61,4 +61,12 @@ for matrix_t in A:
 	for matrix in A:
 		L[i].append(transpose*matrix)
 	i += 1
-	print i 
+	print i
+
+eigenvalue, v = linalg.eig(L)
+eigenfaces = []
+for i in range(len(images)):
+	gregory = matrix([[0 for i in range(320)] for j in range(320)])
+	for j in range(len(v)):
+		gregory = gregory + v[i]*A[j]
+	eigenfaces.append(gregory)
